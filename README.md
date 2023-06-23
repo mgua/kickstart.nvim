@@ -102,6 +102,9 @@ npm install -g tree-sitter-cli
 
 ### Neovim Kickstart Configuration for any linux distribution (in non privileged user context)
 - Exit from nvim if open
+
+check if fd (fd-find) is reachable. If not, it is worth to link fd to whatever fd-find or fdfind is (maybe /usr/cargo/rust/fd)
+
 ```
 cd $HOME/.config
 mv nvim nvim_old
