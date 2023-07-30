@@ -25,7 +25,7 @@ With this plugin (not currently integrated in this kickstart) I was able to suce
 
 ## Neovim preparation and Installation for Linux
 #### Ubuntu
-Neovim can be installed from its repos, as follows, or via "snap install nvim". Snap installs a more recent version, however on ubuntu 22.04 you may need to install libfuse2 (if you get a fuse error) with "apt install libfuse2".
+Neovim can be installed from its repos, as follows, or via **snap install nvim --classic**. Snap installs a more recent version, however on ubuntu 22.04 you may need to install libfuse2 (if you get a fuse error) with **apt install libfuse2**.
 
 install from repos:
 from root:
