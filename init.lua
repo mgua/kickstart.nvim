@@ -137,6 +137,9 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    -- mgua: 2023_10_01 added main="ibl", to prevent the error
+        -- "You are trying to call the setup function of Indent-blankline version 2 but you have version 3 installed."
+    main = "ibl",
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,
