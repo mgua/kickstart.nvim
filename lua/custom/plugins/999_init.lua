@@ -4,10 +4,6 @@
 -- See the kickstart.nvim README for more information
 return {
 	{
-	--Plugin to copy text to the system clipboard using the ANSI OSC52 sequence.
-		"ojroques/nvim-osc52"
-	},
-	{
 	-- Additionnal colorscheme.
 		"folke/tokyonight.nvim",
 		lazy = false,
