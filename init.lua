@@ -74,7 +74,8 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- OSC52 mg sept 09 2023
-  'ojroques/nvim-osc52',
+  -- then moved to custom plugins folder
+  -- 'ojroques/nvim-osc52',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -136,7 +137,7 @@ require('lazy').setup({
     },
   },
 
-  { -- Add indentation guides even on blank lines
+--[[  { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -148,6 +149,7 @@ require('lazy').setup({
       show_trailing_blankline_indent = false,
     },
   },
+--]]
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -254,6 +256,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- the following is for lukas-reineke/indent-blankline.nvim
+-- require("ibl").setup()
+
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
