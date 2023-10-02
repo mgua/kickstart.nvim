@@ -25,6 +25,9 @@ With this plugin (not currently integrated in this kickstart) I was able to suce
 
 ## Neovim preparation and Installation for Linux
 #### Ubuntu
+Neovim can be installed from its repos, as follows, or via **snap install nvim --classic**. Snap installs a more recent version, however on ubuntu 22.04 you may need to install libfuse2 (if you get a fuse error) with **apt install libfuse2**.
+
+install from repos:
 from root:
 ```
 apt update
@@ -34,10 +37,18 @@ add-apt-repository ppa:neovim-ppa/stable
 apt update
 apt install ripgrep fd-find git gcc make
 apt install neovim
-apt install python3 python3-venv python3-pip (for python development) 
-cpan install Neovim::Ext (for perl development)
-apt install npm (for node javascript development and to support some language servers/parsers)
-npm install -g neovim (for node integration)
+
+apt install python3 python3-venv python3-pip 
+#(for python development) 
+
+cpan install Neovim::Ext
+#(for perl development)
+
+apt install npm
+#(for node javascript development and to support some language servers/parsers)
+
+npm install -g neovim
+# (for node integration)
 ```
 
 #### Kali
@@ -53,11 +64,21 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod +x nvim.appimage
 cp nvim.appimage /usr/bin/
 ln -s /usr/bin/nvim.appimage /usr/bin/nvim
-apt install python3 python3-venv python3-pip (for python development) 
-cpan install Neovim::Ext (for perl development)
-apt install npm (for node javascript development and to support some language servers/parsers)
+
+apt install python3 python3-venv python3-pip
+# (for python development) 
+
+cpan install Neovim::Ext
+# (for perl development)
+
+apt install npm
+# (for node javascript development and to support some language servers/parsers)
+
 npm install -g neovim
-npm install -g tree-sitter-cli  (this is needed to execute the :TSInstallFromGrammar <language> command within neovim)
+
+npm install -g tree-sitter-cli
+# (this is needed to execute the :TSInstallFromGrammar <language> command within neovim)
+
 ```
 
 #### Almalinux
@@ -66,15 +87,27 @@ from root:
 yum update
 yum install ripgrep fd-find git gcc make gcc-c++
 yum install neovim
-yum install python3 python3-pip (for python development)
-cpan install Neovim::Ext (for perl development) 
-yum install npm (for node javascript development and to support some language servers/parsers: this brings in nodejs, nodejs-libs)
+
+yum install python3 python3-pip
+# (for python development)
+
+cpan install Neovim::Ext
+# (for perl development) 
+
+yum install npm
+# (for node javascript development and to support some language servers/parsers: this brings in nodejs, nodejs-libs)
+
 npm install -g neovim
-npm install -g tree-sitter-cli  (this is needed to execute the :TSInstallFromGrammar <language> command within neovim)
+npm install -g tree-sitter-cli
+# (this is needed to execute the :TSInstallFromGrammar <language> command within neovim)
+
 ```
 
 ### Neovim Kickstart Configuration for any linux distribution (in non privileged user context)
 - Exit from nvim if open
+
+check if fd (fd-find) is reachable. If not, it is worth to link fd to whatever fd-find or fdfind is (maybe /usr/cargo/rust/fd)
+
 ```
 cd $HOME/.config
 mv nvim nvim_old
@@ -109,24 +142,40 @@ Actions to be executed from administrator user:
   - install winget from microsoft store
 3. From an administrator console, execute:
   ```
-  winget install gnuwin32.tar (bsdtar, installed in c:\Windows\WinSxS\.. c:\cygwin64\bin...)
-  winget install gnuwin32.findutils (grep)
-  winget install Microsoft.WindowsTerminal (if not from winget, it can be installed from microsoft https://aka.ms/terminal https://github.com/microsoft/terminal#other-install-methods https://github.com/microsoft/terminal (go on releases on right side...))
+  winget install gnuwin32.tar 
+  # (bsdtar, installed in c:\Windows\WinSxS\.. c:\cygwin64\bin...)
+  winget install gnuwin32.findutils
+  # (grep)
+  winget install Microsoft.WindowsTerminal
+  # (if not from winget, it can be installed from microsoft https://aka.ms/terminal https://github.com/microsoft/terminal#other-install-methods https://github.com/microsoft/terminal (go on releases on right side...))
   (for windows server 2022 -without winget- see later)
 
-  choco install git less bat gzip ripgrep grep fd fzf far netcat curl wget procexp mingw make unzip (choco installs most of the tools in c:\ProgramData\chocolatey\bin)
+  choco install git less bat gzip ripgrep grep fd fzf far netcat curl wget procexp mingw make unzip
+  # (choco installs most of the tools in c:\ProgramData\chocolatey\bin)
+  
   ```
   - nerdfonts are a nice to have extension. After font installation, they can be setup in Windows Terminal to be available for neovim interface. Go download nerdfonts https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip uncompress in a temporary folder. then select all the .ttf files and press right-click then install. Open MS terminal, press the top icon on the right of the "+", then choose Profile/Defaults on the left, then Appearance and in font face set Hack Nerd Font
   ```
-  choco install python (for python development. (I experienced path issues when using python.org install, maybe due to Anaconda being on my system too)) 
-  winget install StrawberryPerl.StrawberryPerl (or choco install StrawberryPerl - for perl development)
-  cpanm -n Neovim::Ext (or cpan install Neovim::Ext) (for perl development)
+  choco install python
+  # (for python development. (I experienced path issues when using python.org install, maybe due to Anaconda being on my system too)) 
+  
+  winget install StrawberryPerl.StrawberryPerl
+  # (or choco install StrawberryPerl - for perl development)
+  
+  cpanm -n Neovim::Ext
+  # (or cpan install Neovim::Ext) (for perl development)
+  
   ```
   - A local node installation may be needed, for some language servers to be run. this requires the following:
   ```
-  winget install OpenJS.NodeJS.LTS (or choco install nodejs-lts nodejs.commandline)
-  npm install -g neovim (after closing and reopening admin window)
-  npm install -g tree-sitter-cli  (this is needed to execute the :TSInstallFromGrammar <language> command within neovim)
+  winget install OpenJS.NodeJS.LTS
+  # (or choco install nodejs-lts nodejs.commandline)
+  
+  npm install -g neovim
+  # (after closing and reopening admin window)
+  
+  npm install -g tree-sitter-cli
+  # (this is needed to execute the :TSInstallFromGrammar <language> command within neovim)
   ```
   - And finally the neovim installation:
   ```
@@ -140,10 +189,13 @@ This operating system is similar to Windows 10/11 but I could not manage to have
 Luckily Chocolatey can install many packages.
   ``` 
   choco install less bat gzip ripgrep grep fd fzf far netcat curl wget procexp mingw make unzip git python strawberryperl neovim
-  cpanm -n Neovim::Ext (or cpan install Neovim::Ext) (for perl development)
+  
+  cpanm -n Neovim::Ext 
+  # (or cpan install Neovim::Ext) (for perl development)
+  
   ``` 
 #### Microsoft Windows terminal
-Installing Microsoft Windows Terminal (wt.exe) was a bit tricky:
+Installing Microsoft Windows Terminal (wt.exe) was a bit tricky: (as of may 2023 winget tool is not available on Windows server, and choco install microsoft-windows-terminal fails)
 
 1. download Microsoft Windows Terminal from github release (on the right): download both preinstall kit and package for windows 10 version x64 architecture (windows11 version doesnt work). Unzip the preinstall kit.
 
@@ -178,19 +230,29 @@ choco install neovim
 
 ```
   cd %HOMEPATH%	(typically c:\Users\<your-username>\)
-  py -m venv venv_nvim	(for python development, we create a dedicated environment for nvim)
-  .\venv_nvim\Scripts\activate 	(for python)
-  py -m pip install pip --upgrade (for python, upgrade pip)
-  py -m pip install neovim (for python, install neovim python package)
-  mkdir %HOMEPATH%\AppData\Local\nvim\	(to avoid some path not found error)
-  mkdir %HOMEPATH%\AppData\Local\Temp\nvim\ (to avoid some path not found error from lsp)
+  py -m venv venv_nvim
+  #	((or python3) for python development, we create a dedicated environment for nvim)
+  
+  .\venv_nvim\Scripts\activate
+  py -m pip install pip --upgrade
+  py -m pip install neovim
+  # (for python, install neovim python package)
+  
+  mkdir %HOMEPATH%\AppData\Local\nvim\
+  # (to avoid some path not found error)
+  
+  mkdir %HOMEPATH%\AppData\Local\Temp\nvim\
+  # (to avoid some path not found error from lsp)
+  
   (Exit from nvim if open)
+  
   cd %HOMEPATH%\AppData\Local\
   ren nvim nvim_old
   mkdir nvim
   cd nvim
   git clone https://github.com/mgua/kickstart.nvim.git .
-  (launch nvim)
+  # (launch nvim)
+  
 ```
 
 # Additional configurations 
