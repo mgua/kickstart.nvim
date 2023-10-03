@@ -101,7 +101,9 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  -- This has been moved to the custom plugin folder
+  -- { 'folke/which-key.nvim', opts = {} },
+  --
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -362,9 +364,10 @@ require('nvim-treesitter.configs').setup {
 
 
 -- OSC52 (mg sept 09 2023) https://github.com/ojroques/nvim-osc52
-vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
-vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
-vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+-- moved to custom plugin folder (additional keyset)
+-- vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+-- vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+-- vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
 
 
 -- Diagnostic keymaps
