@@ -49,6 +49,10 @@ apt install npm
 
 npm install -g neovim
 # (for node integration)
+
+# you may need to link fd to fdfind
+ln -s /usr/bin/fdfind /usr/bin/fd
+
 ```
 
 #### Kali
