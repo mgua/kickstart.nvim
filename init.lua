@@ -180,6 +180,23 @@ require('lazy').setup({
     build = ":TSUpdate",
   },
 
+  -- the dense-analysis ALE plugin was added by mgua on 2025.nov.17
+  {
+    'dense-analysis/ale',
+    config = function()
+        -- Configuration goes here.
+        local g = vim.g
+
+        g.ale_ruby_rubocop_auto_correct_all = 1
+
+        g.ale_linters = {
+            ruby = {'rubocop', 'ruby'},
+            lua = {'lua_language_server'}
+        }
+    end
+  },
+
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
