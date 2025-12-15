@@ -25,10 +25,11 @@ return {
 	-- For previewing markdown file using web browser with live update and reload.
 		"iamcco/markdown-preview.nvim",
 	},
-	{
-	-- Remove all background colors to make nvim transparent (e.g for terminal backgroud image).
-		"xiyaowong/transparent.nvim"
-	},
+	-- {
+	-- -- Remove all background colors to make nvim transparent (e.g for terminal backgroud image).
+	-- 	"xiyaowong/transparent.nvim"
+	-- },
+
 	{
 	-- A super powerful autopair plugin for Neovim that supports multiple characters.
 		"jiangmiao/auto-pairs"
