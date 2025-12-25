@@ -1,5 +1,13 @@
 # mgua's kickstart.nvim
 
+# important update (dec 2025)
+
+There is a new public repo where i rebuilt almost from scratch this installation. Windows part is complete.
+[https://github.com/mgua/mg-nvim-2025] 
+The new repo supports a simpler neovim setup which is not dependent and does not include several plugins that are included in this one.
+
+---------
+
 # Introduction
 
 This project is heavily based on TJ DeVries amazing work to promote Neovim adoption and usage.
